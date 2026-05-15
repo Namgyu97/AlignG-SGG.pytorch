@@ -1,7 +1,5 @@
 ## Learning Context-Conditioned Predicate Semantics via Prototype Feedback
 
-### Overview
-
 <img width="1774" height="827" alt="image" src="https://github.com/user-attachments/assets/1f0750b1-9f1c-4e54-8a59-f8d47f639033" />
 
 ### Abstract
