@@ -17,9 +17,7 @@ Check [INSTALL.md](./INSTALL.md) for installation instructions.
 Check [DATASET.md](./DATASET.md) for instructions of dataset preprocessing.
 
 ## Train
-The predictor for AlignG is registered as `SGGPredictor`. A convenience
-launcher is provided in `scripts/train.sh` (set `MODE` to `PredCls`, `SGCls`,
-or `SGDet`); the full command it runs is:
+The predictor for AlignG is registered as `SGGPredictor`. A convenience launcher is provided in `scripts/train.sh` (set `MODE` to `PredCls`, `SGCls`, or `SGDet`); the full command it runs is:
 
 ```bash
 python tools/relation_train_net.py \
@@ -43,23 +41,15 @@ python tools/relation_train_net.py \
 
 For GQA-200 use `configs/e2e_relation_X_101_32_8_FPN_1x_GQA.yaml` instead.
 
-## Test
-Use `scripts/test.sh` (same `MODE` switch) or run
-`python tools/relation_test_net.py` with the same flags and
-`MODEL.WEIGHT ./checkpoints/AlignG_<MODE>/model_final.pth`.
-
 ## Device
 All our experiments are conducted on a single NVIDIA GeForce RTX 4090.
-For distributed training across multiple GPUs, follow the launch instructions
-in [Scene-Graph-Benchmark.pytorch](https://github.com/KaihuaTang/Scene-Graph-Benchmark.pytorch).
+For distributed training across multiple GPUs, follow the launch instructions in [Scene-Graph-Benchmark.pytorch](https://github.com/KaihuaTang/Scene-Graph-Benchmark.pytorch).
 
 ## Acknowledgement
 The code is built on [Scene-Graph-Benchmark.pytorch](https://github.com/KaihuaTang/Scene-Graph-Benchmark.pytorch) and the SGG-benchmark fork released with [PE-NET](https://github.com/VL-Group/PENET).
 
-## 📝 Citation
-
+## Citation
 If you find this work useful, please consider citing:
-
 ```bibtex
 @inproceedings{jung2026alignG,
   title     = {Learning Context-Conditioned Predicate Semantics via Prototype Feedback},
