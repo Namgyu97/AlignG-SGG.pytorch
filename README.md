@@ -10,6 +10,55 @@ In scene graph generation, a central challenge is modeling polysemous predicates
 
 ---
 
+## Installation
+Check [INSTALL.md](./INSTALL.md) for installation instructions.
+
+## Dataset
+Check [DATASET.md](./DATASET.md) for instructions of dataset preprocessing.
+
+## Train
+The predictor for AlignG is registered as `SGGPredictor`. A convenience
+launcher is provided in `scripts/train.sh` (set `MODE` to `PredCls`, `SGCls`,
+or `SGDet`); the full command it runs is:
+
+```bash
+python tools/relation_train_net.py \
+  --config-file "configs/e2e_relation_X_101_32_8_FPN_1x.yaml" \
+  MODEL.ROI_RELATION_HEAD.USE_GT_BOX True \
+  MODEL.ROI_RELATION_HEAD.USE_GT_OBJECT_LABEL True \
+  MODEL.ROI_RELATION_HEAD.PREDICTOR SGGPredictor \
+  DTYPE "float32" \
+  SOLVER.IMS_PER_BATCH 8 TEST.IMS_PER_BATCH 1 \
+  SOLVER.MAX_ITER 60000 SOLVER.BASE_LR 1e-3 \
+  SOLVER.SCHEDULE.TYPE WarmupMultiStepLR \
+  MODEL.ROI_RELATION_HEAD.BATCH_SIZE_PER_IMAGE 1024 \
+  SOLVER.STEPS "(28000, 48000)" SOLVER.VAL_PERIOD 30000 \
+  SOLVER.CHECKPOINT_PERIOD 30000 \
+  GLOVE_DIR ./datasets/vg/ \
+  MODEL.PRETRAINED_DETECTOR_CKPT ./checkpoints/pretrained_faster_rcnn/model_final.pth \
+  OUTPUT_DIR ./checkpoints/AlignG_PredCls \
+  SOLVER.PRE_VAL False \
+  SOLVER.GRAD_NORM_CLIP 5.0
+```
+
+For GQA-200 use `configs/e2e_relation_X_101_32_8_FPN_1x_GQA.yaml` instead.
+
+## Test
+Use `scripts/test.sh` (same `MODE` switch) or run
+`python tools/relation_test_net.py` with the same flags and
+`MODEL.WEIGHT ./checkpoints/AlignG_<MODE>/model_final.pth`.
+
+## Device
+All our experiments are conducted on a single NVIDIA GeForce RTX 4090.
+For distributed training across multiple GPUs, follow the launch instructions
+in [Scene-Graph-Benchmark.pytorch](https://github.com/KaihuaTang/Scene-Graph-Benchmark.pytorch).
+
+## Acknowledgement
+The code is built on
+[Scene-Graph-Benchmark.pytorch](https://github.com/KaihuaTang/Scene-Graph-Benchmark.pytorch)
+and the SGG-benchmark fork released with
+[PE-NET (CVPR 2023)](https://github.com/VL-Group/PENET).
+
 ## 📝 Citation
 
 If you find this work useful, please consider citing:

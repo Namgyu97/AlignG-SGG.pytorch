@@ -1,0 +1,21 @@
+# Install PyTorch separately first (see INSTALL.md): e.g.,
+#   pip install torch==2.5.1 torchvision==0.20.1 --index-url https://download.pytorch.org/whl/cu121
+
+# Core
+numpy>=1.26,<2.3
+scipy>=1.11
+h5py>=3.10
+Pillow>=10.0
+opencv-python>=4.8
+yacs>=0.1.8
+tqdm>=4.66
+matplotlib>=3.8
+pandas>=2.1
+overrides>=7.0
+
+# Build / runtime utilities for the C++/CUDA extensions
+ninja>=1.11
+cython>=3.0
+
+# COCO API (used by maskrcnn_benchmark.data eval helpers and dataset utilities)
+pycocotools>=2.0.7
