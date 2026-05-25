@@ -54,10 +54,7 @@ For distributed training across multiple GPUs, follow the launch instructions
 in [Scene-Graph-Benchmark.pytorch](https://github.com/KaihuaTang/Scene-Graph-Benchmark.pytorch).
 
 ## Acknowledgement
-The code is built on
-[Scene-Graph-Benchmark.pytorch](https://github.com/KaihuaTang/Scene-Graph-Benchmark.pytorch)
-and the SGG-benchmark fork released with
-[PE-NET (CVPR 2023)](https://github.com/VL-Group/PENET).
+The code is built on [Scene-Graph-Benchmark.pytorch](https://github.com/KaihuaTang/Scene-Graph-Benchmark.pytorch) and the SGG-benchmark fork released with [PE-NET](https://github.com/VL-Group/PENET).
 
 ## 📝 Citation
 
